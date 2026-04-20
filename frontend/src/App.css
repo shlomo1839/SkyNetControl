@@ -1,0 +1,533 @@
+:root {
+  --iaf-beige: #F3E5AB;
+  --deep-navy: #2C3E50;
+  --military-green: #4B5320;
+  --action-gold: #D4AF37;
+  --text-light: #ECF0F1;
+  --text-dark: #2C3E50;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--iaf-beige);
+  color: var(--text-dark);
+}
+
+
+/* Container הראשי */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--deep-navy);
+  color: var(--iaf-beige);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--action-gold);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.nav-logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--iaf-beige);
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+
+.nav-links a.active {
+  background-color: var(--iaf-beige);
+  color: var(--deep-navy);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+.nav-links a:hover:not(.active) {
+  color: var(--action-gold);
+}
+
+.main-content {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+
+/* עיצוב הלוגו המרכזי - מוקטן וללא אנימציות */
+.central-iaf-logo {
+  height: 60px; /* הקטנו את הגובה מ-90px ל-60px */
+  width: auto;
+  
+  /* הסרנו את ה-drop-shadow (הילה מוזהבת) */
+  
+  /* הסרנו את ה-transition (מעבר חלק) */
+  
+  cursor: pointer;
+  
+  /* שמירה על מיקום absolute כדי שלא יזיז אלמנטים אחרים */
+  position: absolute;
+  top: 5px; /* ממוקם קצת מתחת לקצה העליון */
+  
+  /* טריק למרכוז מושלם של אלמנט absolute - נשאר */
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+/* הסרנו לחלוטין את אפקט ה-hover (הגדלה וסיבוב) */
+.central-iaf-logo:hover {
+  /* אין צורך בהגדרות כאן, הוא יישאר כמו במצב הרגיל */
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.military-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.military-form input {
+  padding: 12px;
+  border: 1px solid var(--deep-navy);
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--deep-navy);
+  color: var(--iaf-beige);
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--action-gold);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.2);
+}
+
+.military-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.military-table th {
+  background-color: var(--deep-navy);
+  color: var(--iaf-beige);
+  text-align: right;
+  padding: 12px;
+}
+
+.military-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.bold-text {
+  font-weight: bold;
+  color: var(--deep-navy);
+}
+
+
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* כפתור פתיחה/סגירה */
+.toggle-btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  background-color: var(--deep-navy);
+  border-bottom: 2px solid var(--action-gold);
+}
+
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-badge.available {
+  background-color: #2ecc71; /* ירוק מבצעי */
+  color: white;
+}
+
+.status-badge.maintenance {
+  background-color: #e74c3c; /* אדום טיפול */
+  color: white;
+}
+
+select {
+  padding: 12px;
+  border: 1px solid var(--deep-navy);
+  border-radius: 4px;
+  background: white;
+  margin-bottom: 10px;
+}
+
+/* עיצוב כפתור המחיקה */
+.btn-delete {
+    background-color: #e74c3c; /* אדום צבאי/אזהרה */
+    color: white;
+    border: 1px solid #c0392b;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* אפקט במעבר עכבר */
+.btn-delete:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* אפקט בלחיצה */
+.btn-delete:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* התאמת העמודה בטבלה שיהיה רווח */
+.military-table td:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-status {
+    background-color: #3498db; /* כחול */
+    color: white;
+    border: 1px solid #2980b9;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-status:hover {
+    background-color: #2980b9;
+}
+
+
+
+.edit-input {
+    padding: 4px 8px;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    background: #2c3e50;
+    color: white;
+    width: 100%;
+}
+
+.btn-save {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #219150;
+}
+
+/* כפתור עריכה שכבר יש לנו */
+.btn-edit {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+/* לוח הבקרה הראשי */
+.monitor-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* כותרת הדף */
+.monitor-header h2 {
+    color: #ecf0f1;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* חלוקת המסך - טופס בצד אחד וטבלה בצד שני (במסכים רחבים) */
+.monitor-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* הטופס תופס שליש, הטבלה שני שליש */
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .monitor-grid {
+        grid-template-columns: 1fr; /* במסכים קטנים הכל אחד מתחת לשני */
+    }
+}
+
+/* עיצוב כפתור ההמראה */
+.btn-takeoff {
+    background-color: #e67e22; /* כתום מבצעי */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-takeoff:hover {
+    background-color: #d35400;
+}
+
+/* עיצוב כפתור הנחיתה */
+.btn-land {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-land:hover {
+    background-color: #2ecc71;
+}
+
+/* סטטוסים בטבלה */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge.in-air {
+    background-color: rgba(230, 126, 34, 0.2);
+    color: #e67e22;
+    border: 1px solid #e67e22;
+}
+
+.status-badge.landed {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+/* --- Flight Monitor Layout --- */
+
+.monitor-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.monitor-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* רוחב קבוע לטופס, והטבלה לוקחת את השאר */
+    gap: 30px;
+    align-items: start;
+}
+
+/* התאמה למסכים קטנים - הופך לטור אחד */
+@media (max-width: 1100px) {
+    .monitor-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-card {
+        max-width: 100% !important; /* שהטופס יתפרס על כל הרוחב בנייד */
+    }
+}
+
+/* --- Form Card Design --- */
+
+.form-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    max-width: 400px;
+    transition: transform 0.2s ease;
+    box-sizing: border-box; /* חשוב מאוד למניעת חריגת אלמנטים */
+}
+
+.form-card:hover {
+    transform: translateY(-5px);
+}
+
+.form-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* --- Form Elements --- */
+
+.military-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #34495e;
+}
+
+.military-form input, 
+.military-form select {
+    padding: 10px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    outline: none;
+    width: 100%; /* תמיד תופס 100% מהקונטיינר שלו */
+    box-sizing: border-box; 
+}
+
+.military-form input:focus, 
+.military-form select:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 5px rgba(230, 126, 34, 0.3);
+}
+
+/* --- The Row (Lat/Lng Fix) --- */
+
+.form-row {
+    display: flex;
+    gap: 15px; /* רווח בין השדות */
+    width: 100%;
+}
+
+.form-row .form-group {
+    flex: 1; /* מחלק את השורה בדיוק לחצי */
+    min-width: 0; /* מונע גלישה של Input */
+}
+
+/* --- Buttons --- */
+
+.btn-takeoff {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-takeoff:hover {
+    filter: brightness(1.1);
+}
+
+.btn-takeoff:active {
+    transform: scale(0.98);
+}
+
+/* --- Table & Badges --- */
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.status-badge.in-air {
+    background-color: #fff3e0;
+    color: #e67e22;
+    border: 1px solid #ffcc80;
+}
+
+.status-badge.landed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+.status-badge.landed {
+    background-color: #28a745;
+    color: white;
+}
