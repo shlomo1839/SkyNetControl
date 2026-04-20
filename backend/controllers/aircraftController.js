@@ -19,28 +19,17 @@ export const createAircraft = async (req, res) => {
     }
 
     const newJet = await Aircraft.create({ name:tailNumber, typeId: typeId, status: status || "available" });
-    res.status(201).json(newJet);
+
+    const aircraftWithData = await Aircraft.findByPk(newJet.id, {
+      include: [{ model: AircraftType, as: "type" }],
+    });
+    res.status(201).json(aircraftWithData);
   } catch (error) {
     console.error("Sql Error:", error.message);
     res.status(400).json({ message: error.message });
   }
 };
 
-
-// export const createAircraft = async (req, res) => {
-//     try {
-//         const { name, typeId } = req.body;
-//         const newAircraft = await Aircraft.create({ name, typeId, status: 'available' });
-//         // ---------
-//         const aircraftWithData = await Aircraft.findByPk(newAircraft.id, {
-//             include: [{ model: aircraftType, as: 'type' }],
-//         });
-
-//         res.status(201).json(aircraftWithData);
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// };
 
 export const updateAircraft = async (req, res) => {
   try {
