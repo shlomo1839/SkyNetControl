@@ -74,7 +74,7 @@ export const landingFlight = async (req, res) => {
         const flight = await Flight.findByPk(id);
 
         if (!flight) {
-            return res.status(404).json({ message: "Flight dwosent exsists"})
+            return res.status(404).json({ message: "Flight does not exist" })
         }
 
         await flight.update({

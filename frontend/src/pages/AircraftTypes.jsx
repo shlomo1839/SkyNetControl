@@ -3,7 +3,7 @@ import AircraftTypeForm from "../components/AircraftTypeForm";
 import AircraftTypeList from "../components/AircraftTypeList";
 
 const AircraftTypes = () => {
-  const [isFormOpen, setIsFormOpen] = useState();
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <div className="page-container">

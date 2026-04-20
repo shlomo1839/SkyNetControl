@@ -6,7 +6,7 @@ const AircraftTable = () => {
 
     useEffect(() => {
         fetchAircrafts();
-    }, [fetchAircrafts]);
+    }, []);
 
     // const getTypeName = (typeId) => {
     //     const type = types.find(t => t.id === parseInt(typeId));
@@ -15,7 +15,11 @@ const AircraftTable = () => {
 
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this aircraft?")) {
-            deleteAircraft(id);
+            try {
+                await deleteAircraft(id);
+            } catch (error) {
+                alert("Error deleting aircraft");
+            }
         }
     };
 

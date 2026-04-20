@@ -26,7 +26,7 @@ export const createType = async (req, res) => {
     try {
         const { name, maxSpeed, fuelCapacity } = req.body
         const newType = await AircraftType.create({ name, maxSpeed, fuelCapacity });
-        res.status(200).json(newType);
+        return res.status(200).json(newType);
     } catch (error) {
         if (error.name === 'SequelizeUniqueConstraintError') {
             return res.status(400).json({ message: "Type name already exists"})

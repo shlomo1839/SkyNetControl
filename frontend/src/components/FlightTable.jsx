@@ -6,7 +6,7 @@ const FlightTable = () => {
 
   useEffect(() => {
     fetchFlights();
-  }, [fetchFlights]);
+  }, []);                      
 
   if (loading) return <p>Updating flight board...</p>;
 

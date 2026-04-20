@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import axios from 'axios';
+import api from '../api/axios.js';
 
 const useFlightStore = create((set, get) => ({
     flights: [],
@@ -9,7 +9,7 @@ const useFlightStore = create((set, get) => ({
     fetchFlights: async () => {
         set({ loading: true });
         try {
-            const response = await axios.get('http://localhost:3000/api/flights')
+            const response = await api.get('/flights')
             set({ flights: response.data, loading: false })
         } catch (error) {
             set({ error: error.message, loading: false })
@@ -18,7 +18,7 @@ const useFlightStore = create((set, get) => ({
 
     addFlight: async (flightData) => {
         try {
-            const response = await axios.post('http://localhost:3000/api/flights', flightData);
+            const response = await api.post('/flights', flightData);
             set((state) => ({ 
                 flights: [response.data, ...state.flights],
                 loading: false
@@ -31,12 +31,12 @@ const useFlightStore = create((set, get) => ({
 
     setLanding: async (id) => {
         try {
-            const response = await axios.patch(`http://localhost:3000/api/flights/${id}/land`);
+            const response = await api.patch(`/flights/${id}/land`);
             const updatedFlight = response.data;
 
             set((state) => ({
                 flights: state.flights.map((f) =>
-                    f.id == id ? updatedFlight : f)
+                    Number(f.id) == Number(id) ? updatedFlight : f)
             }));
         } catch (error) {
             set({ error: 'Error in Update Landing', loading: false })

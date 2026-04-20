@@ -4,8 +4,8 @@ import useAircraftStore from "../store/useAircraftStore";
 const AircraftForm = () => {
   const { types, fetchTypes, addAircraft } = useAircraftStore();
   const [formData, setFormData] = useState({
-    tailNumber: "101",
-    typeId: "1",
+    tailNumber: "",
+    typeId: "",
     status: "available",
   });
 
@@ -20,10 +20,6 @@ const AircraftForm = () => {
         typeId: formData.typeId,
         status: formData.status
     };
-
-
-
-    // if (!formData.typeId) return alert("Choose Aircraft Type");
 
     try {
       await addAircraft(aircraftToSave);

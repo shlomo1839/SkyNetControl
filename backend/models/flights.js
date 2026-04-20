@@ -23,13 +23,13 @@ const Flight = sequelize.define("Flight", {
   },
   destination: {
     type: DataTypes.STRING,
-    allowNull: true, // יעד הטיסה
+    allowNull: true,
 },
 
-  // landingTime: {
-  //   type: DataTypes.DATE,
-  //   allowNull: true, // מטוס באוויר
-  // },
+  landingTime: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
   destLat: {
     type: DataTypes.FLOAT, // קו רוחב
     allowNull: false,
