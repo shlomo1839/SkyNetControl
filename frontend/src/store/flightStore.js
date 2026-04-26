@@ -41,7 +41,21 @@ const useFlightStore = create((set, get) => ({
         } catch (error) {
             set({ error: 'Error in Update Landing', loading: false })
         }
-    }
+    },
+
+    updatedFlightLocation: async (id, lat, lng) => {
+        try {
+            set((state) => ({
+                flights: state.flights.map((f) =>
+                    Number(f.id) === Number(id) ? { ...f, latitude: lat, longitude: lng } : f
+                )
+            }));
+        } catch (error) {
+            set({ error: 'Error in Update Location', loading: false })
+        }
+    },
+
+    
 }));
 
 export default useFlightStore;
