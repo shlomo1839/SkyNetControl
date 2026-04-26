@@ -3,7 +3,7 @@ import {
   TileLayer,
   Marker,
   Popup,
-  useMapEvent,
+  useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -24,8 +24,8 @@ L.Marker.prototype.options.icon = DefaultIcon;
 const MapEvents = () => {
   const addFlight = useFlightStore((state) => state.addFlight);
 
-  useMapEvent({
-    click(e) {
+  useMapEvents({
+    click: async (e) => {
       const { lat, lng } = e.latlng;
       const newFlight = ({
         callsign: `FLIGHT-${Math.floor(Math.random() * 1000)}`,
@@ -33,9 +33,13 @@ const MapEvents = () => {
         longitude: lng,
         status: "In Air",
       });
-
       console.log("adding flight at:", lat, lng)
-      addFlight(newFlight);
+
+      try {
+        await addFlight(newFlight);
+      } catch (error) {
+        console.error("Error adding flight:", error);
+      }
     },
   });
   return null;
@@ -48,7 +52,7 @@ const Map = () => {
   return (
     <MapContainer
       center={position}
-      zoom={13}
+      zoom={8}
       style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
@@ -60,7 +64,7 @@ const Map = () => {
       {flights.map((flight) => (
         <Marker key={flight.id} position={[flight.latitude, flight.longitude]}>
           <Popup>
-            Aircraft: {flight.callsign} <br />
+            <strong>Aircraft: {flight.callsign}</strong><br />
             Status: {flight.status}
           </Popup>
         </Marker>

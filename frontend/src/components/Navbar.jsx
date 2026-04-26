@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="nav-section right">
         <div className="nav-links">
           <NavLink to="/" end>לוח טיסות</NavLink>
-          <NavLink to="/map">מפת שו"ב</NavLink>
+          <NavLink to="/map">מפות</NavLink>
           <NavLink to="/fleet">ניהול צי</NavLink>
           <NavLink to="/types">סוגי מטוסים</NavLink>
         </div>
