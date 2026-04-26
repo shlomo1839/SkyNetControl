@@ -3,6 +3,7 @@ import MainLayout from "./components/MainLayout";
 import AircraftType from "./pages/AircraftTypes";
 import FleetManagement from "./pages/FleetManagement";
 import FlightMonitor from "./pages/FlightMonitor";
+import MapPage from "./pages/MapPage";
 import "./App.css";
 
 
@@ -14,6 +15,8 @@ function App() {
           <Route index element={<FlightMonitor />} />
           <Route path="fleet" element={<FleetManagement />} />
           <Route path="types" element={<AircraftType />} />
+
+          <Route path="map" element={<MapPage />} />
           <Route path="*" element={<h1>Page Not Found 404</h1>} />
         </Route>
       </Routes>
