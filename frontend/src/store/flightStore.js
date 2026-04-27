@@ -45,6 +45,7 @@ const useFlightStore = create((set, get) => ({
 
     updatedFlightLocation: async (id, lat, lng) => {
         try {
+            await api.patch(`/flights/${id}`, { latitude: lat, longitude: lng });
             set((state) => ({
                 flights: state.flights.map((f) =>
                     Number(f.id) === Number(id) ? { ...f, latitude: lat, longitude: lng } : f
