@@ -128,3 +128,19 @@ export const deleteFlight = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const updateFlightLocation = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { lat, lng } = req.body;
+        const flight = await Flight.findByPk(id);
+
+        if (!flight) {
+            return res.status(404).json({ message: "flight not found" });
+        }
+        await flight.update({ destLat: lat, destLong: lng });
+        res.status(200).json(flight);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
